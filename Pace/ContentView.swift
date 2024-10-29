@@ -7,17 +7,35 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct ContentView: View {
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor(Color("BackgroundColor"))
+    }
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            OnboardingView()
+                .tabItem {
+                    Image(systemName: "house.fill")
+                    Text("Home")
+                }
+            DashboardView()
+                .tabItem {
+                    Image(systemName: "speedometer")
+                    Text("Dashboard")
+                }
+            RouteMapView()
+                .tabItem {
+                    Image(systemName: "map.fill")
+                    Text("Map")
+                }
         }
-        .padding()
+        .accentColor(Color("AccentColor"))
     }
 }
+
 
 #Preview {
     ContentView()
